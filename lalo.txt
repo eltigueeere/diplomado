@@ -1,0 +1,75 @@
+pip install jupyterlab
+pip install pandas
+python -m pip install -U pip
+python -m pip install -U matplotlib
+pip install xlrd
+
+https://relopezbriega.github.io/blog/2015/06/27/probabilidad-y-estadistica-con-python/
+
+def GrafP1Edad():
+    N_points = 100
+    n_bins = 9
+
+    # Generate a normal distribution, center at x=0 and y=5
+    x = tiempo=df["edad"].tolist()
+    y = tiempo=df["edad"].tolist()
+
+    fig, axs = plt.subplots(1,2, sharey=True, tight_layout=True)
+
+    # We can set the number of bins with the `bins` kwarg
+    axs[0].hist(x, bins=n_bins)
+    axs[1].hist(y, bins=n_bins)
+    print(len(y))
+GrafP1Edad()
+
+#%%
+n_bins=3
+x = tiempo=df["edad"].tolist()
+fig, axs = plt.subplots(1, 2, tight_layout=True)
+N, bins, patches = axs[0].hist(x, bins=60, alpha=1, linewidth=1)
+fracs = N / N.max()
+norm = colors.Normalize(fracs.min(), fracs.max())
+for thisfrac, thispatch in zip(fracs, patches):
+    color = plt.cm.viridis(norm(thisfrac))
+    thispatch.set_facecolor(color)
+axs[1].hist(x, bins=n_bins, density=True)
+axs[1].yaxis.set_major_formatter(PercentFormatter(xmax=1))
+print(norm)
+
+
+    z=[]
+    listCuentaI=[]
+    tiempo=df["duracionConsumo"].tolist()
+    cuentaId=df["cuentaId"].tolist()
+    fig = plt.figure()
+    ax1 = fig.add_subplot(111, projection='3d')
+    for i in range(len(cuentaId)):
+        listCuentaI.append(i)
+        z.append(tiempo[i])
+    x3 = listCuentaI
+    y3 = listCuentaI
+    z3 = np.zeros(len(z))
+    dx = np.ones(len(listCuentaI))
+    dy = np.ones(len(listCuentaI))
+    dz = z
+    ax1.bar3d(x3, y3, z3, dx, dy, dz)
+    plt.title("Tiempo consumo en Sg por cuenta")
+    plt.xticks(np.arange(len(cuentaId)), cuentaId, rotation = 45)
+    plt.show()
+
+    
+def GrafP1Edad():
+    N_points = 100
+    n_bins = 5
+
+    # Generate a normal distribution, center at x=0 and y=5
+    x = tiempo=df["duracionConsumo"].tolist()
+    y = tiempo=df["duracionConsumo"].tolist()
+
+    fig, axs = plt.subplots(1,2, sharey=True, tight_layout=True)
+    
+    # We can set the number of bins with the `bins` kwarg
+    axs[0].hist(x, bins=n_bins)
+    axs[1].hist(y, bins=n_bins)
+    print(len(y))
+GrafP1Edad()
